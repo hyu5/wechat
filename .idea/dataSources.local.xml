@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="SQLite -" uuid="c320f8d9-2232-4af8-8bb3-8a9296f4f7cc">
-      <secret-storage>master_key</secret-storage>
-    </data-source>
+    <data-source name="Rails wechat: development" uuid="d61bc9eb-123d-4873-9185-6c3157d42a28" />
+    <data-source name="Rails wechat: test" uuid="e55ffe3d-ddd4-4729-9b32-ad036cd1b80c" />
   </component>
 </project>
