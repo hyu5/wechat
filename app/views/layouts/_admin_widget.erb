@@ -1,5 +1,21 @@
 <% if admin_signed_in? %>
+
     <p>Welcome <%= current_admin.email %></p>
+
+    <%= link_to 'Edit', edit_admin_registration_path %><br />
+
+    <div>
+    <h3>Users List</h3>
+    <% @users = User.all %>
+    <ol>
+    <% @users.each do |user| %>
+        <li>
+          <%= user.email %>
+        </li>
+    <% end %>
+    </ol>
+    </div>
+
     <%= link_to 'Logged In [click to logout]', destroy_admin_session_path, :method => :delete %>
 <% else %>
     <p>You are not signed in.</p>
