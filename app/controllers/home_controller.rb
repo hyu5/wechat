@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   def update
     @user = User.find_by_email(params[:user][:email])
     @user.update_attributes(user_params)
-
+    redirect_to "/"
   end
 
   def user_params
