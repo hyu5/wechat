@@ -1,0 +1,22 @@
+<h1> Edit Profile </h1>
+
+<%= form_for @user, url: home_path(@user), html: { method: :put } do |f| %>
+    <%= f.label :Email  %>
+    <%= f.text_field :email %>
+    <br/>
+    <%= f.label :FirstName  %>
+    <%= f.text_field :FirstName %>
+    <br/>
+    <%= f.label :LastName  %>
+    <%= f.text_field :LastName %>
+    <br/>
+    <%= f.label :Phone  %>
+    <%= f.text_field :Phone %>
+    <br/>
+    <%= f.label :DateOfBirth  %>
+    <%= f.text_field :DateOfBirth %>
+    <br/>
+
+
+    <%= f.submit "Save changes" %>
+<% end %>
