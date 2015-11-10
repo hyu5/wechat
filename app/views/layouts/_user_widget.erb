@@ -19,6 +19,7 @@
     <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
     <%= link_to 'Change Email or Password', edit_user_registration_path, :method => :get %>
     <%= link_to 'Edit Profile', '/home/edit_profile?email=' + current_user.email, :method => :get %>
+    <%= link_to 'Moments', '/posts/index' %>
 <% else %>
     <p>You are not signed in.</p>
     <%= link_to 'Login', new_user_session_path %>
