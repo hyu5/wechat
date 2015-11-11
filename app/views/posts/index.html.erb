@@ -1,0 +1,19 @@
+<h1>My Moments</h1>
+
+<%=flash[:notice]%>
+
+<% @moments.each do |moment| %>
+    <p><b>Posted <%= time_ago_in_words(moment.created_at) %> ago</b></p>
+    <tr>
+      <td><%= moment.message %></td>
+    </tr>
+    <br />
+    <br />
+    <%=link_to("Delete",
+               url_for(:controller=>"posts", :action=>"delete", :id=>moment),
+               data: {:confirm=>"Are you sure?"})%>
+<% end %>
+<br>
+<br>
+<%= link_to("Add A New Moment", :action =>"new")%>
+<%= link_to 'Back', "/" %>

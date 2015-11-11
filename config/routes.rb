@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  get 'posts/delete'
+
+  post 'posts/delete'
+
+  get 'posts/new'
+
+  post 'posts/create'
+
+  get 'posts/index'
+
   devise_for :admins
   get 'home/admin'
 
