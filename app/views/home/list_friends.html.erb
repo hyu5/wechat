@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+    <p>Welcome <%= current_user.email %></p>
+
+    <div>
+      <h3>Friends Moments List</h3>
+      <% @find_users = Friendship.where(user_id: current_user.id) %>
+      <ol>
+          <% @find_users.each do |user| %>
+            <% @friends = User.where(id: user.friend_id) %>
+                <% @friends.each do |friend| %>
+                    <li>
+                      <strong><%= friend.email %></strong>
+                      <%= link_to 'Show Moments', controller: "posts", action: "show", index: friend.id %>
+                    </li>
+                <% end %>
+          <% end %>
+      </ol>
+    </div>
+
+    <br />
+    <%= link_to 'Back', "/" %>
+
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

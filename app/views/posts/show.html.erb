@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+    <% @friend.each do |f| %>
+        <h1><%= f.email %>'s Moments</h1>
+    <% end %>
+    <br>
+
+    <% @friend_moments.each do |moment| %>
+        <p><b>Posted <%= time_ago_in_words(moment.created_at) %> ago</b></p>
+        <tr>
+          <td><%= moment.message %></td>
+        </tr>
+    <% end %>
+    <br>
+    <br>
+    <%= link_to 'Back', "/home/list_friends" %>
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

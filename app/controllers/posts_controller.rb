@@ -1,20 +1,25 @@
 class PostsController < ApplicationController
   def index
-    @moments = Moment.all.order(created_at: :desc)
+    @moments = Moment.where(user_id: current_user.id).order(created_at: :desc)
+  end
+
+  def show
+    @friend_moments = Moment.where(user_id: params[:index]).order(created_at: :desc)
+    @friend = User.where(id: params[:index])
   end
 
   def new
-
+    @moment = Moment.new
   end
 
   def create
-    moment = Moment.new(moment_params)
-    if (moment.save)
+    @moment = Moment.new(moment_params)
+    @moment.user_id = current_user.id
+    if (@moment.save)
       flash[:notice]="The moment was created successfully!"
       redirect_to :action=>"index"
     else
-      flash[:notice]="Error Creating, try again!"
-      redirect_to :action=>"index"
+      render :action=>"new"
     end
   end
 
@@ -33,6 +38,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def moment_params
-    params.require(:moment).permit(:message)
+    params.require(:moment).permit(:message, :user_id)
   end
 end

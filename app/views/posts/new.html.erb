@@ -1,3 +1,8 @@
-<h1>New Moment</h1>
+<% if user_signed_in? %>
+    <h1>New Moment</h1>
 
-<%= render :partial=> "message_form", locals: {action: "create", id: nil, button_name: "Create"} %>
+    <%= render :partial=> "message_form", locals: {action: "create", id: nil, button_name: "Create"} %>
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

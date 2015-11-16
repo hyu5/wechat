@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'posts/show'
+
+  get '/home/list_friends'
+
   get 'posts/delete'
 
   post 'posts/delete'

@@ -1,5 +1,18 @@
-<%= form_for :moment, :url=>{:action=> (action), :id=>(id)} do |f|%>
-    <b>What message would you like to post?</b><br />
+<%= form_for @moment, :url=>{:action=> (action), :id=>(id)} do |f|%>
+    <% if @moment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@moment.errors.count, "error") %>
+            prohibited this moment from being created:</h2>
+          <p>There was a problem with the following field:</p>
+          <ul>
+            <% @moment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <b>What moment message would you like to create?</b><br />
     <%= f.text_area(:message, cols: 50, rows: 6) %><br />
-    <%= submit_tag(button_name) %>
+    <%= submit_tag(button_name) %><br>
+    <%= link_to 'Back', "/posts/index" %>
 <% end %>
