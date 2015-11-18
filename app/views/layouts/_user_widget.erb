@@ -3,7 +3,8 @@
 
     <div>
       <h3>Users List</h3>
-      <% @users = User.where.not(id: current_user.id) %>
+      <% @users1 = User.where.not(id: current_user.friends.map(&:id)) %>
+      <% @users = @users1.where.not(id: current_user.id ) %>
       <ol>
       <% @users.each do |user| %>
         <li>
