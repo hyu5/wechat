@@ -2,7 +2,7 @@
     <p>Welcome <%= current_user.email %></p>
 
     <div>
-      <h3>Friends Moments List</h3>
+      <h3>My Friends List</h3>
       <% @find_users = Friendship.where(user_id: current_user.id) %>
       <ol>
           <% @find_users.each do |user| %>

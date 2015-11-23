@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
   def index
+    if params[:search]
+      @users1 = User.where.not(id: current_user.friends.map(&:id))
+      @users = @users1.where.not(id: current_user.id).where("email LIKE ?", "%#{params[:search]}%")
+    else
+      @users1 = User.where.not(id: current_user.friends.map(&:id))
+      @users = @users1.where.not(id: current_user.id)
+    end
   end
 
   def admin

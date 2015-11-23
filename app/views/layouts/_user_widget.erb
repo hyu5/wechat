@@ -1,10 +1,16 @@
 <% if user_signed_in? %>
     <p>Welcome <%= current_user.email %></p>
 
+    <h3>Users List</h3>
+
+    <%= form_tag root_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+    <% end %>
+
     <div>
-      <h3>Users List</h3>
-      <% @users1 = User.where.not(id: current_user.friends.map(&:id)) %>
-      <% @users = @users1.where.not(id: current_user.id ) %>
       <ol>
       <% @users.each do |user| %>
         <li>
@@ -21,7 +27,7 @@
     <%= link_to 'Change Email or Password', edit_user_registration_path, :method => :get %>
     <%= link_to 'Edit Profile', '/home/edit_profile?email=' + current_user.email, :method => :get %>
     <%= link_to 'My Moments', '/posts/index' %>
-    <%= link_to 'My Friends Moments', '/home/list_friends' %>
+    <%= link_to 'My Friends List', '/home/list_friends' %>
 <% else %>
     <p>You are not signed in.</p>
     <%= link_to 'Login', new_user_session_path %>
