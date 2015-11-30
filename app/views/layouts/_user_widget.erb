@@ -20,8 +20,32 @@
       <% end %>
       </ol>
     </div>
+    <div>
+      <h3>You are the member of the following groups</h3>
+      <ol>
+        <% current_user.groups.each do |group| %>
+            <li>
+              <%= group.name %>
+            </li>
+        <% end %>
+      </ol>
+    </div>
+    <%= link_to 'Create a Group', '/home/create_group?userid=' + current_user.id.to_s, :method => :get %>
 
+    <%= link_to 'Send a Message', '/home/send_message?userid=' + current_user.id.to_s, :method => :get %>
 
+    <br />
+    <div>
+      <h3>List of your messages</h3>
+      <ol>
+        <% @allmessages.each do |message| %>
+            <li>
+              <%= message.body %>
+            </li>
+        <% end %>
+      </ol>
+
+    </div>
     <br />
     <%= link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete %>
     <%= link_to 'Change Email or Password', edit_user_registration_path, :method => :get %>

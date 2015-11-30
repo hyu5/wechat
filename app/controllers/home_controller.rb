@@ -31,4 +31,41 @@ class HomeController < ApplicationController
     params.require(:user).permit(:FirstName, :LastName, :Phone, :DateOfBirth)
   end
 
+  def create_group
+    if request.post?
+      id = params[:userid]
+      user = User.find(id)
+      group = Group.new
+      group.name = params[:groupname]
+      group.users << user
+      group.save
+    end
+    if request.get?
+      @userid = params[:userid]
+    end
+  end
+
+  def send_message
+    if request.post?
+      message = Message.new
+      message.sender_id = params[:userid]
+      message.body = params[:message]
+
+      receiver_users = params[:tousers].to_s.split(";")
+      receiver_users.each do |receiver|
+        message.users << User.find(receiver)
+      end
+
+      receiver_groups = params[:togroups].to_s.split(";")
+      receiver_groups.each do|group|
+        message.groups << Group.find(group)
+      end
+      message.save
+      redirect_to "/"
+    end
+    if request.get?
+      @userid = params[:userid].to_s
+    end
+  end
+
 end

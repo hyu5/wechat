@@ -23,6 +23,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   get 'home/edit_profile' => 'home#edit_profile'
+  get 'home/create_group' => 'home#create_group'
+
+  get 'home/send_message' => 'home#send_message'
+
+  post 'home/create_group' => 'home#create_group'
+
+  post 'home/send_message' => 'home#send_message'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
