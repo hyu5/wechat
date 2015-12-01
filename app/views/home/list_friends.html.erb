@@ -10,6 +10,7 @@
                 <% @friends.each do |friend| %>
                     <li>
                       <strong><%= friend.email %></strong>
+                      <%=link_to("Remove Friend", friendship_path(friend), :method => :delete, data: {:confirm=>"Are you sure?"})%>
                       <%= link_to 'Show Moments', controller: "posts", action: "show", index: friend.id %>
                     </li>
                 <% end %>
