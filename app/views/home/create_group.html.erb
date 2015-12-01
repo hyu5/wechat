@@ -1,3 +1,4 @@
+<div class="frame">
 <h1> Create a Group</h1>
 <form action="/home/create_group">
   Group Name:<br/>
@@ -5,6 +6,8 @@
   <input type="hidden" name="userid" value=<%=@userid%>> </input>
   <input type="text" name="groupname" value=""/>
   <br/>
-  <input type="submit" value="Submit" formmethod="post"/>
+  <input type="submit" value="Submit" formmethod="post", class="btn btn-success"/>
 </form>
-<%= link_to "Home", '/' %>
+<br>
+<%= link_to "Back to Main Page", '/', class: "btn btn-info" %>
+</div>

@@ -1,27 +1,33 @@
 <% if user_signed_in? %>
-    <p>Welcome <%= current_user.email %></p>
+    <% if flash[:notice] %>
+        <p class="alert alert-success"><%= notice %></p>
+    <%end %>
+    <h3 style="margin-bottom: 25px;">Welcome <%= current_user.email %></h3>
 
-    <div>
+    <div class="frame3">
       <h3>My Friends List</h3>
+      <table class="table table-condensed">
       <% @find_users = Friendship.where(user_id: current_user.id) %>
-      <ol>
+
           <% @find_users.each do |user| %>
             <% @friends = User.where(id: user.friend_id) %>
                 <% @friends.each do |friend| %>
-                    <li>
-                      <strong><%= friend.email %></strong>
-                      <%=link_to("Remove Friend", friendship_path(friend), :method => :delete, data: {:confirm=>"Are you sure?"})%>
-                      <%= link_to 'Show Moments', controller: "posts", action: "show", index: friend.id %>
-                    </li>
+                  <tr>
+                    <td width="50%"><strong><%= friend.email %></strong></td>
+                    <td width="25%"><%=link_to("Remove Friend", friendship_path(friend), :method => :delete, data: {:confirm=>"Are you sure?"}, class:'btn btn-danger btn-xs')%></td>
+                    <td width="25%"><%= link_to 'Show Moments', {controller: "posts", action: "show", index: friend.id}, class:'btn btn-success btn-xs' %></td>
+                  </tr>
                 <% end %>
           <% end %>
-      </ol>
+        </table>
     </div>
 
     <br />
-    <%= link_to 'Back', "/" %>
+    <div class="center">
+        <%= link_to 'Back to Main Page', "/",  class: "btn btn-info" %>
+    </div>
 
 <% else %>
     <p>You are not signed in.</p>
-    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Login', new_user_session_path, class: "btn btn-info" %>
 <% end %>

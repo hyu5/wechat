@@ -1,21 +1,33 @@
 <% if user_signed_in? %>
-    <h1>My Moments</h1>
+    <h1 style="text-align: center">My Moments</h1>
 
     <% @moments.each do |moment| %>
+    <div class="rcorners">
         <p><b>Posted <%= time_ago_in_words(moment.created_at) %> ago</b></p>
         <tr>
           <td><%= moment.message %></td>
         </tr>
-        <br />
-        <br />
+        <br>
+        <br>
+        <div class="center">
         <%=link_to("Delete",
                    url_for(:controller=>"posts", :action=>"delete", :id=>moment),
-                   data: {:confirm=>"Are you sure?"})%>
+                   data: {:confirm=>"Are you sure?"}, class: "btn btn-danger")%>
+        </div>
+        <br>
+        <br>
+    </div>
     <% end %>
     <br>
     <br>
-    <%= link_to("Add A New Moment", :action =>"new")%>
-    <%= link_to 'Back', "/" %>
+    <div class="center">
+        <%= link_to("Add A New Moment", {:action =>"new"}, class: "btn btn-primary" )%>
+    </div>
+    <br>
+    <br>
+    <div class="center">
+        <%= link_to 'Back to Main Page', "/", class: "btn btn-info" %>
+    </div>
 <% else %>
     <p>You are not signed in.</p>
     <%= link_to 'Login', new_user_session_path %>

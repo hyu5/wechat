@@ -8,6 +8,7 @@ class HomeController < ApplicationController
         @users1 = User.where.not(id: current_user.friends.map(&:id))
         @users = @users1.where.not(id: current_user.id)
       end
+      @c_user = User.where(id: current_user.id)
     end
   end
 

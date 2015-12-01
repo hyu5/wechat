@@ -11,8 +11,15 @@
           </ul>
         </div>
     <% end %>
-    <b>What moment message would you like to create?</b><br />
-    <%= f.text_area(:message, cols: 50, rows: 6) %><br />
-    <%= submit_tag(button_name) %><br>
-    <%= link_to 'Back', "/posts/index" %>
+    <div class="center">
+        <b>What moment message would you like to create?</b><br />
+        <%= f.text_area(:message, cols: 50, rows: 6, :placeholder => "Enter moment message here...") %>
+    </div>
+    <br><br>
+    <div class="center">
+        <%= submit_tag(button_name, class:"btn btn-success")%><br><br>
+    </div>
+    <div class="center">
+         <%= link_to 'Back to My Moments', "/posts/index", class: "btn btn-info" %>
+    </div>
 <% end %>

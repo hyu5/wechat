@@ -1,25 +1,27 @@
+<div class="frame1">
 <h1> Edit Profile </h1>
 
 <%= form_for @user, url: home_path(@user), html: { method: :put } do |f| %>
-    <%= f.label :Email  %>
-    <%= f.text_field :email %>
+    <%= f.label :Email  %><br />
+    <%= f.text_field :email, readonly: true %>
     <br/>
-    <%= f.label :FirstName  %>
+    <%= f.label :First_Name  %><br />
     <%= f.text_field :FirstName %>
     <br/>
-    <%= f.label :LastName  %>
+    <%= f.label :Last_Name  %><br />
     <%= f.text_field :LastName %>
     <br/>
-    <%= f.label :Phone  %>
+    <%= f.label :Phone  %><br />
     <%= f.text_field :Phone %>
     <br/>
-    <%= f.label :DateOfBirth  %>
+    <%= f.label :Date_Of_Birth  %><br />
     <%= f.text_field :DateOfBirth %>
     <br/>
 
 
-    <%= f.submit "Save changes" %>
+    <%= f.submit "Save changes", class:"btn btn-success"%>
     <br/>
     <br/>
-    <%= link_to 'Back', "/" %>
+    <%= link_to 'Back', "/", class:"btn btn-info"%>
 <% end %>
+</div>

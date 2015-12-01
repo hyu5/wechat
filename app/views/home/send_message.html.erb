@@ -1,14 +1,16 @@
+<div class="frame">
 <h1> Send a Message</h1>
 <form action="/home/send_message" id="messageform">
   <br/>
   <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
   <input type="hidden" name="userid" value=<%=@userid%>> </input>
-  To Users: <input type="text" name="tousers"/>
+  <label>To Users</label> <br /><input type="text" name="tousers"/>
   <br/>
-  To Groups: <input type="text" name="togroups"/>
+  <label>To Groups</label> <br /><input type="text" name="togroups"/>
   <br/>
-  <input type="submit" value="Send" formmethod="post"/>
+  <input type="submit" value="Send" formmethod="post", class="btn btn-success"/><br /><br />
 </form>
 <textarea name="message" form="messageform">Enter message here...</textarea>
-<br/>
-<%= link_to "Home", '/' %>
+<br/><br />
+<%= link_to "Back to Main Page", '/', class:"btn btn-info" %>
+</div>
