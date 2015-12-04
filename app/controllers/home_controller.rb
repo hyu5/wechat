@@ -13,7 +13,15 @@ class HomeController < ApplicationController
   end
 
 
-  def admin
+  def destroy
+    @user = User.find_by_id(params[:id])
+    if @user.destroy
+      flash[:notice] = "The user has been deleted successfully."
+      redirect_to :back
+    else
+      flash[:error] = "Unable to delete user."
+      redirect_to :back
+    end
   end
 
   def edit_profile
