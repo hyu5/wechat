@@ -8,9 +8,12 @@
   <br/>
   <label>To Groups</label> <br /><input type="text" name="togroups"/>
   <br/>
-  <input type="submit" value="Send" formmethod="post", class="btn btn-success"/><br /><br />
+  <br/>
+  <textarea name="message" rows="3" cols="30" form="messageform" placeholder="Enter message here..."></textarea>
+  <br/>
+  <br/>
+  <input type="submit" value="Send" formmethod="post", class="btn btn-success"/><br />
 </form>
-<textarea name="message" form="messageform" placeholder="Enter message here..."></textarea>
-<br/><br />
+<br/>
 <%= link_to "Back to Main Page", '/', class:"btn btn-info" %>
 </div>

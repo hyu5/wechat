@@ -48,6 +48,7 @@ class HomeController < ApplicationController
       group.name = params[:groupname]
       group.users << user
       group.save
+      redirect_to "/"
     end
     if request.get?
       @userid = params[:userid]

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151116030107) do
 
   create_table "groups_users", id: false, force: :cascade do |t|
     t.integer "user_id"
+    t.integer "group_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -53,6 +54,11 @@ ActiveRecord::Schema.define(version: 20151116030107) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "message_id"
   end
 
   create_table "moments", force: :cascade do |t|
