@@ -96,7 +96,7 @@
                     </h4>
                   </div>
                   <div id="collapse1" class="panel-collapse collapse">
-                    <% if false %>
+
                     <ul class="list-group">
                       <% current_user.groups.each do |group| %>
                           <li class="list-group-item">
@@ -104,7 +104,7 @@
                           </li>
                       <% end %>
                     </ul>
-                    <% end %>
+
                   </div>
                 </div>
             </div>
@@ -124,13 +124,13 @@
               </div>
               <div id="collapse1_1" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <% if false %>
-                  <% @allmessages.each do |message| %>
+
+                  <% current_user.messages.each do |message| %>
                       <li class="list-group-item">
                         <%= message.body %>
                       </li>
                   <% end %>
-                  <% end %>
+
                 </ul>
               </div>
             </div>
