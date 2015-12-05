@@ -39,11 +39,11 @@
       <div class="col-md-8">
         <h3 style="text-align: center;">Users List</h3>
         <table class="table table-condensed">
-          <% @users = User.all %>
             <% @users.each do |user| %>
               <tr>
                 <td width="70%"><strong><%= user.email%></strong></td>
                 <td width="30%"><%= link_to "Delete User", home_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></td>
+                <td width="30%"><%= link_to "Edit Profile", '/home/admin_edit_profile?email=' + user.email, :method => :get, class: "btn btn-info" %></td>
               </tr>
           <% end %>
         </table>

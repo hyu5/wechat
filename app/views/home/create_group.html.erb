@@ -1,13 +1,19 @@
-<div class="frame">
-<h1> Create a Group</h1>
-<form action="/home/create_group">
-  Group Name:<br/>
-  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-  <input type="hidden" name="userid" value=<%=@userid%>> </input>
-  <input type="text" name="groupname" value=""/>
-  <br/>
-  <input type="submit" value="Submit" formmethod="post", class="btn btn-success"/>
-</form>
-<br>
-<%= link_to "Back to Main Page", '/', class: "btn btn-info" %>
-</div>
+<% if user_signed_in? %>
+    <div class="frame">
+      <h1> Create a Group</h1>
+      <form action="/home/create_group">
+        Group Name:<br/>
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <input type="hidden" name="userid" value=<%=@userid%>> </input>
+        <input type="text" name="groupname" value=""/>
+        <br/>
+        <input type="submit" value="Submit" formmethod="post", class="btn btn-success"/>
+      </form>
+      <br>
+      <%= link_to "Back to Main Page", '/', class: "btn btn-info" %>
+    </div>
+
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

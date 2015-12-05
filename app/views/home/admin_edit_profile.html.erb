@@ -1,10 +1,10 @@
-<% if user_signed_in? %>
+<% if admin_signed_in? %>
     <div class="frame1">
-      <h1> Edit Profile </h1>
+      <h1> Edit User Profile </h1>
 
       <%= form_for @user, url: home_path(@user), html: { method: :put } do |f| %>
           <%= f.label :Email  %><br />
-          <%= f.text_field :email, readonly: true %>
+          <%= f.text_field :email %>
           <br/>
           <%= f.label :First_Name  %><br />
           <%= f.text_field :FirstName %>
@@ -23,11 +23,11 @@
           <%= f.submit "Save changes", class:"btn btn-success"%>
           <br/>
           <br/>
-          <%= link_to 'Back', "/", class:"btn btn-info"%>
+          <%= link_to 'Back to Main Page', "/home/admin", class:"btn btn-info"%>
       <% end %>
     </div>
 
 <% else %>
     <p>You are not signed in.</p>
-    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Login', new_admin_session_path %>
 <% end %>

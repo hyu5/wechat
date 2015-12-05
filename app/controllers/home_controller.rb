@@ -12,6 +12,16 @@ class HomeController < ApplicationController
     end
   end
 
+  def admin
+    if admin_signed_in?
+      if params[:search]
+        @users = User.where("email LIKE ?", "%#{params[:search]}%")
+      else
+        @users = User.all
+      end
+    end
+  end
+
 
   def destroy
     @user = User.find_by_id(params[:id])
@@ -27,13 +37,21 @@ class HomeController < ApplicationController
   def edit_profile
     email = params[:email]
     @user = User.find_by_email(email)
+  end
 
+  def admin_edit_profile
+    email = params[:email]
+    @user = User.find_by_email(email)
   end
 
   def update
     @user = User.find_by_email(params[:user][:email])
     @user.update_attributes(user_params)
-    redirect_to "/"
+    if admin_signed_in?
+      redirect_to "/home/admin"
+    elsif user_signed_in?
+      redirect_to "/"
+    end
   end
 
   def user_params
