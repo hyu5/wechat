@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+    <div class="frame">
+      <h1> Join a Group</h1>
+      <form action="/home/join_group">
+        Group ID:<br/>
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <input type="hidden" name="userid" value=<%=@userid%>> </input>
+        <input type="text" name="groupid" value=""/>
+        <br/>
+        <input type="submit" value="Submit" formmethod="post", class="btn btn-success"/>
+      </form>
+      <br>
+      <%= link_to "Back to Main Page", '/', class: "btn btn-info" %>
+    </div>
+
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_session_path %>
+<% end %>

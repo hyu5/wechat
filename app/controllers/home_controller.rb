@@ -96,4 +96,21 @@ class HomeController < ApplicationController
     end
   end
 
+  def join_group
+    if request.post?
+      user = User.find(params[:userid])
+      group = Group.find(params[:groupid])
+
+      if group != nil && !group.users.include?(user)
+        group.users << user
+        group.save
+        redirect_to "/"
+      end
+    end
+    if request.get?
+      @userid = params[:userid]
+    end
+  end
+
+
 end

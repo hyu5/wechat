@@ -12,6 +12,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Create a Group', '/home/create_group?userid=' + current_user.id.to_s, :method => :get %></li>
+            <li><%= link_to 'Join a Group', '/home/join_group?userid=' + current_user.id.to_s, :method => :get %></li>
             <li><%= link_to 'Send a Message', '/home/send_message?userid=' + current_user.id.to_s, :method => :get %></li>
             <li><%= link_to 'My Moments', '/posts/index' %></li>
             <li><%= link_to 'My Friends List', '/home/list_friends' %></li>
