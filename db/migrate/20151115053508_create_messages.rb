@@ -12,5 +12,10 @@ class CreateMessages < ActiveRecord::Migration
       t.column :user_id, :integer
       t.column :message_id, :integer
     end
+
+    create_table :groups_messages, :id=>false do |t|
+      t.column :group_id, :integer
+      t.column :message_id, :integer
+    end
   end
 end

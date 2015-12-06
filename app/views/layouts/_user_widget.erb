@@ -143,6 +143,17 @@
                       </li>
                   <% end %>
 
+                  <% current_user.groups.each do |group|%>
+                      <%group.messages.order(created_at: :desc).each do |message| %>
+                      <li class="list-group-item">
+                        <p>"<%= message.body %>"
+                          <br />was sent by User: <%= User.find(message.sender_id).email %> (User ID: <%=message.sender_id%>)
+                          <br /><%= message.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%r %Z %F')%>
+                        </p>
+                      </li>
+                      <% end %>
+                  <% end %>
+
                 </ul>
               </div>
             </div>
