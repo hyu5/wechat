@@ -25,10 +25,12 @@ Rails.application.routes.draw do
   get 'home/edit_profile' => 'home#edit_profile'
   get 'home/admin_edit_profile' => 'home#admin_edit_profile'
   get 'home/create_group' => 'home#create_group'
+  get 'home/join_group' => 'home#join_group'
 
   get 'home/send_message' => 'home#send_message'
 
   post 'home/create_group' => 'home#create_group'
+  post 'home/join_group' => 'home#join_group'
 
   post 'home/send_message' => 'home#send_message'
 
