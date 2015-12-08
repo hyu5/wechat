@@ -9,6 +9,11 @@ class HomeController < ApplicationController
         @users = @users1.where.not(id: current_user.id)
       end
       @c_user = User.where(id: current_user.id)
+
+      @xxx = 0
+      current_user.groups.each do |group|
+        @xxx += group.messages.count
+      end
     end
   end
 
